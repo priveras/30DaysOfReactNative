@@ -1,0 +1,3 @@
+rootProject.name = 'SimpleFlexboxLayout'
+
+include ':app'

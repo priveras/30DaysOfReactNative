@@ -27,26 +27,26 @@ class BookSearch extends Component {
     return (
       <TabBarIOS selectedTab={this.state.selectedTab}>
         <TabBarIOS.Item
-            selected={this.state.selectedTab === 'featured'}
-            icon={{uri:'featured'}}
-            onPress={() => {
-                this.setState({
-                    selectedTab: 'featured'
-                });
-            }}>
-            <Featured/>
+          selected={this.state.selectedTab === 'featured'}
+          systemIcon="featured"
+          onPress={() => {
+            this.setState({
+              selectedTab: 'featured'
+            });
+          }}>
+          <Featured/>
         </TabBarIOS.Item>
         <TabBarIOS.Item
-            selected={this.state.selectedTab === 'search'}
-            icon={{uri:'search'}}
-            onPress={() => {
-                this.setState({
-                    selectedTab: 'search'
-                });
-            }}>
-            <Search/>
+          selected={this.state.selectedTab === 'search'}
+          systemIcon="search"
+          onPress={() => {
+            this.setState({
+              selectedTab: 'search'
+            });
+          }}>
+          <Search/>
         </TabBarIOS.Item>
-    </TabBarIOS>
+      </TabBarIOS>
     );
   }
 }

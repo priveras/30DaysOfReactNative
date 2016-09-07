@@ -6,8 +6,11 @@ var styles = StyleSheet.create({
     fontSize: 20,
     backgroundColor: 'white'
   },
+  navbar: {
+    flex: 1
+  },
   container: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center'
   }

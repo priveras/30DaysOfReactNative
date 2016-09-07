@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
-  View,
+  NavigatorIOS,
 } from 'react-native';
 
 const styles = require('../styles.js');
+const SearchBooks = require('./SearchBooks');
 
 class Search extends Component {
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>
-          Search Tab
-        </Text>
-      </View>
+      <NavigatorIOS
+        style={styles.navbar}
+        initialRoute={{
+          title: 'Search Books',
+          component: SearchBooks,
+        }}/>
     );
   }
 }

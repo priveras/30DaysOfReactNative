@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
-  View,
+  NavigatorIOS,
 } from 'react-native';
 
 const styles = require('../styles.js');
+const BookList = require('./BookList');
 
 class Featured extends Component {
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>
-          Featured Tab
-        </Text>
-      </View>
+      <NavigatorIOS
+        style={styles.navbar}
+        initialRoute={{
+          title: 'Featured Books',
+          component: BookList,
+        }}/>
     );
   }
 }

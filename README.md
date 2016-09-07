@@ -14,6 +14,6 @@ Project02 - I learned how to:
   - Show iOS alerts
   - Process user input
 
-Project02 - I learned how to:
+Project03 - I learned how to:
   - Add a tab bar
   - Add preloaded icons to the tab bar

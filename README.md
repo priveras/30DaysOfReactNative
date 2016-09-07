@@ -13,3 +13,7 @@ Project02 - I learned how to:
   - Create a stylesheet
   - Show iOS alerts
   - Process user input
+
+Project02 - I learned how to:
+  - Add a tab bar
+  - Add preloaded icons to the tab bar

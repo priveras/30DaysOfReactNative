@@ -6,11 +6,10 @@ import {
   Image,
   ListView,
   TouchableHighlight,
+  ActivityIndicatorIOS,
 } from 'react-native';
 
-var FAKE_BOOK_DATA = [
-    {volumeInfo: {title: 'The Catcher in the Rye', authors: "J. D. Salinger", imageLinks: {thumbnail: 'http://books.google.com/books/content?id=PCDengEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}}}
-];
+var REQUEST_URL = 'https://www.googleapis.com/books/v1/volumes?q=subject:fiction';
 
 class BookList extends Component {
   constructor(props) {
@@ -24,10 +23,19 @@ class BookList extends Component {
   }
 
   componentDidMount() {
-    var books = FAKE_BOOK_DATA;
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(books)
-    });
+    this.fetchData();
+   }
+
+  fetchData() {
+    fetch(REQUEST_URL)
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(responseData.items),
+        isLoading: false
+      });
+    })
+    .done();
   }
 
   renderBook(book) {
@@ -50,13 +58,28 @@ class BookList extends Component {
   }
 
   render() {
-  var book = FAKE_BOOK_DATA[0];
+    if (this.state.isLoading) {
+      return this.renderLoadingView();
+    }
+
     return (
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this.renderBook.bind(this)}
         style={styles.listView}
       />
+    );
+  }
+
+  renderLoadingView() {
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicatorIOS
+          size='large'/>
+        <Text>
+          Loading books...
+        </Text>
+      </View>
     );
   }
 }
@@ -89,7 +112,15 @@ var styles = StyleSheet.create({
   separator: {
        height: 1,
        backgroundColor: '#dddddd'
-   }
+  },
+  listView: {
+       backgroundColor: '#F5FCFF'
+   },
+   loading: {
+       flex: 1,
+       alignItems: 'center',
+       justifyContent: 'center'
+   },
 })
 
 module.exports = BookList;
